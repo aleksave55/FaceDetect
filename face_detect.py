@@ -1,8 +1,11 @@
 import cv2
-import sys
+from Tkinter import Tk
+import tkFileDialog as filedialog
+
+Tk().withdraw()
 
 # Get user supplied values
-imagePath = "slike/nolo.jpeg"#sys.argv[1]
+imagePath = filedialog.askopenfilename()
 cascPath = "haarcascade_frontalface_default.xml"
 
 # Create the haar cascade
@@ -18,7 +21,7 @@ faces = faceCascade.detectMultiScale(
     scaleFactor=1.3,
     minNeighbors=5,
     minSize=(30, 30),
-    flags = cv2.CASCADE_SCALE_IMAGE     #cv2.cv.CV_HAAR_SCALE_IMAGE
+    flags = cv2.CASCADE_SCALE_IMAGE
 )
 
 print("Found {0} faces!".format(len(faces)))
